@@ -16,8 +16,6 @@ import java.net.Socket;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Timer;
@@ -29,10 +27,6 @@ import javax.swing.JOptionPane;
  * @author Daniel
  */
 public class chat_client extends javax.swing.JFrame {
-
-//    static Socket s;
-//    static DataInputStream dis;
-//    static DataOutputStream dout;
     
     PreparedStatement ps = null;
     Connection conn = null;
@@ -223,7 +217,7 @@ public class chat_client extends javax.swing.JFrame {
             ps.setInt(3, id_contato);
             ps.executeUpdate();
             msg_area.setText(msg_area.getText()+"\n " + usuario + ": " + msg_text.getText());
-           
+
         }
         catch(SQLException e){
             e.printStackTrace();
@@ -264,21 +258,7 @@ public class chat_client extends javax.swing.JFrame {
                 new chat_client().setVisible(true);
             }
         });
-        
-        try{          
-            String msgin="";
-            s = new Socket("192.168.15.11",1201);
-            dis = new DataInputStream(s.getInputStream());
-            dout = new DataOutputStream(s.getOutputStream());
-            
-            while(!msgin.equals("exit")){
-                msgin = dis.readUTF();
-                msg_area.setText(msg_area.getText()+"\n Server: " + msgin);
-            }
-        }
-        catch(Exception e){
-            
-        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
